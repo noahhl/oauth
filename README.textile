@@ -1,0 +1,80 @@
+<h1>oauth: a simple oauth 1.0 client for R</h1>
+
+This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. Focus has been made on limiting external dependencies to RCurl and digest, and on providing a simple syntax. 
+
+This package is unreleased/alpha. Use at your own risk.
+
+Package: oauth
+Title: OAuth client for R
+Version: 0.1
+Depends: RCurl, digest
+Suggests: XML, rjson
+License: MIT
+
+
+<h2>Usage:</h2>
+1) Create a list with the parameters for your application, structured as below:
+
+<pre>
+params <- list(oauth_consumer_key = "B2QJkcSYdARDJ10Gjo2kNw", 
+            oauth_consumer_secret = "WJPF3SENJdk3ACSDF1OJfVJ5EDI3BkYbEQASDFSFA", 
+            oauth_callback="http://somedomain.com",
+            oauth_signature_method = "HMAC-SHA1",
+            oauth_version="1.0", 
+            server = list(
+                          #To get request token
+                          initiate = "https://api.twitter.com/oauth/request_token",
+                          #For user authentication
+                          auth = "https://api.twitter.com/oauth/authorize",
+                          #For access token
+                          token = "https://api.twitter.com/oauth/access_token")
+)
+</pre>
+
+2) Run the <code>Authorize()</code> command, passing it your parameters, optionally with parameters to enable "noisy" output or to specify not to save credentials beyond this session. Recapture the output back into <code>params</code>.
+
+<pre>
+params <- Authorize(params, noisy=F, save=T)
+</pre> 
+
+3) IF you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(consumer_key)</code> command, passing it the consumer key for the app you're using.
+
+<pre>
+  LoadCredentials("B2QJkcSYdARDJ10Gjo2kNw")
+</pre>
+
+4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below.
+
+<pre>
+#Verify credentials
+MakeRequest(params, "http://api.twitter.com/1/account/verify_credentials.json", "GET")
+
+#Send a tweet
+MakeRequest(params, "http://api.twitter.com/1/statuses/update.json", "POST", request=c(status="#rstats is my hero."))
+
+</pre>
+
+
+<h2>Acknowledgements / license</h2>
+Github user twittoru provided the inspiration for the included HMAC-SHA1 implementation, found at: https://gist.github.com/586468
+
+This package is made available under the MIT license:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+

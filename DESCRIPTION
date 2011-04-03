@@ -1,0 +1,10 @@
+Package: oauth
+Title: OAuth client for R
+Version: 0.1
+Date: 2011-04-02
+Author: Noah Lorang
+Maintainer: Noah Lorang <noah@noahhl.com>
+Description: This is a basic Oauth 1.0 client for R with simple syntax and with few external dependencies (RCurl is required).
+Depends: RCurl, digest
+Suggests: XML, rjson
+License: MIT

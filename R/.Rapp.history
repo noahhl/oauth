@@ -1,0 +1,1008 @@
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = NULL,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+GenerateOauthHeader(request_params, "request")
+signature
+uri
+  params$oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+v
+  request_params    <- c(request_params, oauth_signature=signature)
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = NULL,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+request
+request <- "status=Tweeting from R"
+  params$oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+GenerateOauthHeader(request_params, "request")
+GenerateSignatureBaseString(uri, "POST", request_params)
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+GenerateSignatureBaseString(uri, "POST", request_params)
+rm(list=ls())
+source("oauth.R")
+source("oauth_helpers.R")
+#prudence on twitter#
+params <- list(oauth_consumer_key = "7lTg60Hvpak8bZKrUO70dw", #
+            oauth_consumer_secret = "Tlzt11b37a7CRRgbIAt1d750PpLETrDgl35HwQpcAo", #
+            oauth_callback="http://noah.noahhl.com",#
+            oauth_signature_method = "HMAC-SHA1",#
+            oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse=""),#
+            oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0)),#
+            oauth_version="1.0", #
+            server = list(initiate = "https://api.twitter.com/oauth/request_token",#
+                          auth = "https://api.twitter.com/oauth/authorize",#
+                          token = "https://api.twitter.com/oauth/access_token")#
+)#
+#
+#
+a <- GetRequestToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+params$oauth_verifier <- GetAuthorization(params)
+params$oauth_verifier <- GetAuthorization(params)
+a <- GetAccessToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+params
+resource <- "http://api.twitter.com/1/statuses/update.json"
+request <- "status=I have tweeted from R."
+noisy <- TRUE
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+signature
+source("oauth2.R")
+  params$oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))#
+  res$value()
+  curlPerform(url           = paste(uri, "?", request, sep=""),#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+  curlPerform(url           = paste(uri, "?", request, sep=""),#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = NULL,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+  curlPerform(url           = paste(uri, "?", request, sep=""),#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = NULL,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+names(params)
+params$oauth_toekn
+params$oauth_token
+resource
+resource <- "https://api.twitter.com/1/statuses/update.json"
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+request_params
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))
+GenerateOauthHeader(request_params, "request")
+params <- list(oauth_consumer_key = "cDK9EWNclbbZuM3dbGwY", #
+            oauth_consumer_secret = "RdssQ0fs6ARGa9nfoxhcKf0nNSaJvdBwE9lMMOL1", #
+            oauth_callback="http://noah.noahhl.com",#
+            oauth_signature_method = "HMAC-SHA1",#
+            oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse=""),#
+            oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0)),#
+            oauth_version="1.0", #
+            server = list(initiate = "https://37s.assistly.com/oauth/request_token",#
+                          auth = "https://37s.assistly.com/oauth/authorize",#
+                          token = "https://37s.assistly.com/oauth/access_token")#
+)
+a <- GetRequestToken(params)
+a
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}#
+#
+params$oauth_verifier <- GetAuthorization(params)
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}#
+#
+params$oauth_verifier <- GetAuthorization(params)
+a <- GetAccessToken(params)
+a
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+library(rjson)
+install.packages(rjson)
+install.packages("rjson")
+library(rjson)
+MakeRequest <- function(params, resource, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))#
+  return(fromJSON(res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "")
+MakeRequest <- function(params, resource, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  curlPerform(url           = uri,#
+              verbose       = noisy,#
+              writefunction = res$update,#
+              postfields = request,#
+              httpheader    = c(Expect        = "",#
+                                Authorization = GenerateOauthHeader(request_params, "request")))#
+  return((res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "")
+#
+MakeRequest <- function(params, resource, method, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "GET", "")
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "GET", "case_id=10000")
+x``
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "GET", "case_id=10000", noisy=TRUE)
+#
+MakeRequest <- function(params, resource, method, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                getfields = request#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+#
+MakeRequest <- function(params, resource, method, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                getfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "GET", "case_id=10000", noisy=TRUE)
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json?case_id=10000", "GET", "", noisy=TRUE)
+#
+MakeRequest <- function(params, resource, method, request, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json?case_id=10000", "GET", "", noisy=TRUE)
+#
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+#
+#
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep=""))#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+#
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json?case_id=10000", "GET", "", noisy=TRUE)
+MakeRequest(params, "https://37s.assistly.com/api/v1/cases.json", "GET", "case_id=1000", noisy=TRUE)
+#
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+toJSON
+params <- list(oauth_consumer_key = "7lTg60Hvpak8bZKrUO70dw", #
+            oauth_consumer_secret = "Tlzt11b37a7CRRgbIAt1d750PpLETrDgl35HwQpcAo", #
+            oauth_callback="http://noah.noahhl.com",#
+            oauth_signature_method = "HMAC-SHA1",#
+            oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse=""),#
+            oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0)),#
+            oauth_version="1.0", #
+            server = list(initiate = "https://api.twitter.com/oauth/request_token",#
+                          auth = "https://api.twitter.com/oauth/authorize",#
+                          token = "https://api.twitter.com/oauth/access_token")#
+)#
+#
+#
+a <- GetRequestToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+params$oauth_verifier <- GetAuthorization(params)
+a <- GetAccessToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+params
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = toJSON(request),#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+MakeRequest(params, "http://api.twitter.com/1/statuses/update.json", "POST", "status=tweet")
+twitteR
+library(twitteR)
+install.packages("RJSONIO")
+library(twitteR)
+?twitteR
+?sendTweet
+tweet
+twitteR:::tweet
+twitteR:::updateStatus
+postForm("http://twitter.com/statuses/update.json", status="tweet tweet", .opts=list(httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request"))))
+twFromJSON
+twitteR:::twFromJSON
+rawToChar(postForm("http://twitter.com/statuses/update.json", status="tweet tweet", .opts=list(httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))))
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+method <- "POST"
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+rawToChar(postForm("http://twitter.com/statuses/update.json", status="tweet tweet", .opts=list(httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))))
+URLencode
+> GenerateSignatureBaseString(uri, "POST", request_params)
+GenerateSignatureBaseString(uri, "POST", request_params)
+charToRaw(%)
+charToRaw("%20")
+as.character(charToRaw("%20"))
+as.character(charToRaw("%20"))
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], URLencode(request))#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = toJSON(request),#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], URLencode(request))#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = toJSON(request),#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], URLencode(request))
+request_params
+GenerateSignatureBaseString(uri, "POST", request_params)
+request <- list(status="tweet tweet")
+GenerateSignatureBaseString(uri, "POST", request_params)
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource
+request_params
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], URLencode(request))
+request_params
+request
+request[1]
+request[[1]]
+source("oauth_helpers.R")
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)
+request_params
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+source("oauth_helpers.R")
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+signature
+GenerateSignatureBaseString(uri, "POST", request_params)
+  request_params    <- c(request_params, oauth_signature=signature)
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = toJSON(request),#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value(0)
+res$value()
+request
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+params
+GenerateSignatureBaseString(uri, "POST", request_params)
+GenerateSignatureBaseString(uri, "POST", request_params) == "1299790150"
+GenerateSignatureBaseString(uri, "POST", request_params) == "POST&http%3A%2F%2Fhttp%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json%2F&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+a <- "POST&http%3A%2F%2Fhttp%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json%2F&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+a
+GenerateSignatureBaseString(uri, "POST", request_params) == "1299790150"
+a
+GenerateSignatureBaseString(uri, "POST", request_params)
+a <- "POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json%2F&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+GenerateSignatureBaseString(uri, "POST", request_params) == a
+a
+GenerateSignatureBaseString(uri, "POST", request_params)
+"POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)
+GenerateSignatureBaseString(uri, "POST", request_params)
+"POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+GenerateSignatureBaseString(uri, "POST", request_params) == "POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+signature
+grep(GenerateSignatureBaseString(uri, "POST", request_params),"POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet")
+resource
+resource <- "http://api.twitter.com/1/statuses/update.json"
+GenerateSignatureBaseString(uri, "POST", request_params) == "POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+GenerateSignatureBaseString(uri, "POST", request_params)
+GenerateSignatureBaseString(uri, "POST", request_params)
+"POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+  uri <- resource
+GenerateSignatureBaseString(uri, "POST", request_params) == "POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret)
+signature
+MakeHmacKey(params$oauth_consumer_secrete, params$oauth_token_secret)
+MakeHmacKey(params$oauth_consumer_secret, params$oauth_token_secret)
+MakeHmacKey(params$oauth_consumer_secret, params$oauth_token_secret) -> key
+GenerateSignatureBaseString(uri, "POST", request_params) == "POST&http%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&oauth_consumer_key%3D7lTg60Hvpak8bZKrUO70dw%26oauth_nonce%3Dyqkpszpmnmmfdgdgxpog%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1299790150%26oauth_token%3D234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok%26oauth_version%3D1.0%26status%3Dtweet%2520tweet"
+GenerateSignatureBaseString(uri, "POST", request_params) -> msg
+base64(MakeHmacSha1(key, msg))[1]
+MakeHmacSha1(key, msg)
+MakeHmacSha1(msg,key)
+base64(MakeHmacSha1(msg,key))[1]
+resource <- "http://api.twitter.com/1/account/verify_credentials.json"
+request <- NULL
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+params <- list(oauth_consumer_key = "A2RJkcZYdAR8J10Sjo2kNw", #
+            oauth_consumer_secret = "WJPF3WD5Jdk3ACO51OJfVJ5EDI3BkYbEQA0lhStHA", #
+            oauth_callback="http://noah.noahhl.com",#
+            oauth_signature_method = "HMAC-SHA1",#
+            oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse=""),#
+            oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0)),#
+            oauth_version="1.0", #
+            server = list(initiate = "https://api.twitter.com/oauth/request_token",#
+                          auth = "https://api.twitter.com/oauth/authorize",#
+                          token = "https://api.twitter.com/oauth/access_token")#
+)#
+#
+#
+a <- GetRequestToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}#
+#
+params$oauth_verifier <- GetAuthorization(params)
+params$oauth_verifier <- GetAuthorization(params)
+a <- GetAccessToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+y_credentials.json HTTP/1.1> #
+Host: api.twitter.com#
+Accept: */*#
+Authorization: OAuth oauth_nonce="czffqfbelsygufflynpv", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1299791519", oauth_consumer_key="A2RJkcZYdAR8J10Sjo2kNw", oauth_token="234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok", oauth_signature="mGUIvSLoSR%2FxeQtYk7yYjy9W%2B8U%3D", oauth_version="1.0"#
+< HTTP/1.1 401 Unauthorized#
+< Date: Thu, 10 Mar 2011 21:12:18 GMT#
+< Server: hi#
+< Status: 401 Unauthorized#
+< WWW-Authenticate: OAuth realm="http://api.twitter.com"#
+< Content-Type: application/json; charset=utf-8#
+< Content-Length: 81#
+< Cache-Control: no-cache, max-age=300#
+< Set-Cookie: k=70.88.65.226.1299791538236739; path=/; expires=Thu, 17-Mar-11 21:12:18 GMT; domain=.twitter.com#
+< Set-Cookie: guest_id=129979153824060941; path=/; expires=Sat, 09 Apr 2011 21:12:18 GMT#
+< Set-Cookie: _twitter_sess=BAh7CDoPY3JlYXRlZF9hdGwrCEvonKEuAToHaWQiJWZmMmM0NWVlMzRmMjZi%250AZDBiMmM5NWIwYjY5MjI1MDM3IgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVy%250AOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--93958c8c95e667cf1aa1a0f4966e1b55e641f1fc; domain=.twitter.com; path=/; HttpOnly#
+< Expires: Thu, 10 Mar 2011 21:17:18 GMT#
+< Vary: Accept-Encoding#
+< Connection: close#
+< #
+* Closing connection #0
+res$value()
+resource
+GenerateOauthHeader(request_params, "request")
+GenerateOauthHeader(request_params, "request")
+y_credentials.json HTTP/1.1> #
+Host: api.twitter.com#
+Accept: */*#
+Authorization: OAuth oauth_nonce="czffqfbelsygufflynpv", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1299791519", oauth_consumer_key="A2RJkcZYdAR8J10Sjo2kNw", oauth_token="234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok", oauth_signature="mGUIvSLoSR%2FxeQtYk7yYjy9W%2B8U%3D", oauth_version="1.0"#
+< HTTP/1.1 401 Unauthorized#
+< Date: Thu, 10 Mar 2011 21:12:18 GMT#
+< Server: hi#
+< Status: 401 Unauthorized#
+< WWW-Authenticate: OAuth realm="http://api.twitter.com"#
+< Content-Type: application/json; charset=utf-8#
+< Content-Length: 81#
+< Cache-Control: no-cache, max-age=300#
+< Set-Cookie: k=70.88.65.226.1299791538236739; path=/; expires=Thu, 17-Mar-11 21:12:18 GMT; domain=.twitter.com#
+< Set-Cookie: guest_id=129979153824060941; path=/; expires=Sat, 09 Apr 2011 21:12:18 GMT#
+< Set-Cookie: _twitter_sess=BAh7CDoPY3JlYXRlZF9hdGwrCEvonKEuAToHaWQiJWZmMmM0NWVlMzRmMjZi%250AZDBiMmM5NWIwYjY5MjI1MDM3IgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVy%250AOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--93958c8c95e667cf1aa1a0f4966e1b55e641f1fc; domain=.twitter.com; path=/; HttpOnly#
+< Expires: Thu, 10 Mar 2011 21:17:18 GMT#
+< Vary: Accept-Encoding#
+< Connection: close#
+< #
+* Closing connection #0
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+y_credentials.json HTTP/1.1> #
+Host: api.twitter.com#
+Accept: */*#
+Authorization: OAuth oauth_nonce="esejxmffvdnsuvagmeuv", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1299796178", oauth_consumer_key="A2RJkcZYdAR8J10Sjo2kNw", oauth_token="234465384-45AUHZunpqDArqjWaue4QbL1emeZRQu3T069ezok", oauth_signature="0PK3Jmqy4VJGy2n%2BdYCyrc39H2Q%3D", oauth_version="1.0"#
+< HTTP/1.1 401 Unauthorized#
+< Date: Thu, 10 Mar 2011 22:29:45 GMT#
+< Server: hi#
+< Status: 401 Unauthorized#
+< WWW-Authenticate: OAuth realm="http://api.twitter.com"#
+< Content-Type: application/json; charset=utf-8#
+< Content-Length: 81#
+< Cache-Control: no-cache, max-age=300#
+< Set-Cookie: k=70.88.65.226.1299796185420047; path=/; expires=Thu, 17-Mar-11 22:29:45 GMT; domain=.twitter.com#
+< Set-Cookie: guest_id=12997961854233681; path=/; expires=Sat, 09 Apr 2011 22:29:45 GMT#
+< Set-Cookie: _twitter_sess=BAh7CDoPY3JlYXRlZF9hdGwrCFnR46EuAToHaWQiJWRkNTIwYzgwYTA2OTc0%250AYWY4ZTA0MGEzZTIwZjliMTczIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVy%250AOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--178671d6b217a60e7f9f032d0617bb384294f720; domain=.twitter.com; path=/; HttpOnly#
+< Expires: Thu, 10 Mar 2011 22:34:45 GMT#
+< Vary: Accept-Encoding#
+< Connection: close#
+< #
+* Closing connection #0
+res$value()
+resource
+request
+resource <- "http://api.twitter.com/1/statuses/update.json"
+request <- "status=tweet"
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)
+method
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+rawToChar("40")
+rawToChar(40)
+numToChar(40)
+    curlPerform(url           = "http://api.twitter.com/1/statuses/update.json?status=tweettweet",#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+res$value()
+    curlPerform(url           = "http://api.twitter.com/1/statuses/update.json?status=tweettweet",#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+    curlPerform(url           = "http://api.twitter.com/1/statuses/update.json?status=tweettweet",#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = list(status="tweet"),#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+    curlPerform(url           = "http://api.twitter.com/1/statuses/update.json?status=tweettweet",#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = "tweet",#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))
+res$value
+res$value()
+GetRequestToken <- function(params, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+   res       <- basicTextGatherer()#
+   uri       <- params$server$initiate#
+   request_params    <- c(params['oauth_callback'], params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_version'])#
+   signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, "")#
+   request_params    <- c(request_params, oauth_signature=signature)#
+   curlPerform(url           = uri,#
+               verbose       = noisy,#
+               writefunction = res$update,#
+               postfields = NULL,#
+               httpheader    = c(Expect        = "",#
+                                 Authorization = GenerateOauthHeader(request_params)))#
+  res <- res$value()#
+  res <- strsplit(res, "&")[[1]]#
+  tokens <- c()#
+  for(i in 1:length(res)) {#
+    tokens[strsplit(res[i], "=")[[1]][1]] <- strsplit(res[i], "=")[[1]][2]#
+  }#
+  return(tokens)#
+}#
+#
+GetAuthorization <- function(params) {#
+  url <- paste(params$server$auth, "?oauth_token=", params$oauth_token, sep="")#
+  cat("Go to: ", url)#
+  cat("\n\nEnter the oauth_verifier received there:")#
+  oauth_verifier <- readline()#
+}#
+#
+#
+GetAccessToken <- function(params, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+   res    <- basicTextGatherer()#
+   uri    <- params$server$token    #
+   request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_verifier'],params['oauth_version'])#
+   signature <- SignForOauth(uri, "POST", request_params, params$oauth_consumer_secret, params$oauth_token_secret)#
+   request_params    <- c(request_params, oauth_signature=signature)#
+   curlPerform(url           = uri,#
+               verbose       = noisy,#
+               writefunction = res$update,#
+               postfields = NULL,#
+               httpheader    = c(Expect        = "",#
+                                 Authorization = GenerateOauthHeader(request_params, "auth")))#
+   res <- res$value()#
+   res <- strsplit(res, "&")[[1]]#
+   tokens <- c()#
+   for(i in 1:length(res)) {#
+     tokens[strsplit(res[i], "=")[[1]][1]] <- strsplit(res[i], "=")[[1]][2]#
+   }#
+   return(tokens)#
+}#
+#
+MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {#
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))#
+}
+#prudence on twitter#
+params <- list(oauth_consumer_key = "A2RJkcZYdAR8J10Sjo2kNw", #
+            oauth_consumer_secret = "WJPF3WD5Jdk3ACO51OJfVJ5EDI3BkYbEQA0lhStHA", #
+            oauth_callback="http://noah.noahhl.com",#
+            oauth_signature_method = "HMAC-SHA1",#
+            oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse=""),#
+            oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0)),#
+            oauth_version="1.0", #
+            server = list(initiate = "https://api.twitter.com/oauth/request_token",#
+                          auth = "https://api.twitter.com/oauth/authorize",#
+                          token = "https://api.twitter.com/oauth/access_token")#
+)
+a <- GetRequestToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+a
+params$oauth_verifier <- GetAuthorization(params)
+a <- GetAccessToken(params)#
+for(i in 1:length(a)) {#
+  params[names(a[i])] <- a[i]#
+}
+a
+params
+  params$oauth_timestamp <- as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))#
+  params$oauth_nonce <- paste(letters[runif(20, 1, 27)], sep="", collapse="")#
+  res    <- basicTextGatherer()#
+  uri <- resource#
+  request_params <- c(params['oauth_consumer_key'], params['oauth_nonce'], params['oauth_signature_method'], params['oauth_timestamp'], params['oauth_token'], params['oauth_version'], request)#
+  signature <- SignForOauth(uri, method, request_params, params$oauth_consumer_secret, params$oauth_token_secret) #
+  request_params    <- c(request_params, oauth_signature=signature)#
+  if(method == "POST") {#
+    curlPerform(url           = uri,#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                postfields = request[[1]],#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))    #
+  } else {#
+    curlPerform(url           = ifelse(is.null(request), uri, paste(uri, "&", request, sep="")),#
+                verbose       = noisy,#
+                writefunction = res$update,#
+                httpheader    = c(Expect        = "",#
+                                  Authorization = GenerateOauthHeader(request_params, "request")))#
+  }#
+  return((res$value()))
+res$value()
+q()
