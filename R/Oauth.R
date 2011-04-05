@@ -27,7 +27,7 @@ Authorize <- function(params, noisy=F, save=T) {
 }  
 
 LoadCredentials <- function(site) {
-  return(load(file=paste("~/.oauthparams_", site, ".Rdata", sep="")))
+  load(file=paste("~/.oauthparams_", site, ".Rdata", sep=""), envir = .GlobalEnv)
 }
 
 MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {
