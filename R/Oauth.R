@@ -20,13 +20,14 @@ Authorize <- function(params, noisy=F, save=T) {
   }
 
   if(save) {
-    save(params, file=paste("~/.oauthparams_", params$oauth_consumer_key, ".Rdata", sep=""))
+    site <- sub("https://|http://", "", strsplit(params$server$auth, ".com")[[1]][1])
+    save(params, file=paste("~/.oauthparams_", site, ".Rdata", sep=""))
   }
   return(params)
 }  
 
-LoadCredentials <- function(consumer_key) {
-  return(load(file=paste("~/.oauthparams_", consumer_key, ".Rdata", sep="")))
+LoadCredentials <- function(site) {
+  return(load(file=paste("~/.oauthparams_", site, ".Rdata", sep="")))
 }
 
 MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {
