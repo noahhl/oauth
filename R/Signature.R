@@ -10,6 +10,7 @@ SignForOauth <- function(uri, request_method, request_params, consumer_secret, s
 }
 
 GenerateSignatureBaseString <- function(uri, method, request_params) {
+    request_params <- request_params[sort(names(request_params))]
     JoinParams <- function(x) {
       a <- request_params[[x]]
       #Need to double URLencode callback URLs

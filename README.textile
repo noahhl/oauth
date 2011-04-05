@@ -11,6 +11,10 @@ Depends: RCurl, digest
 Suggests: XML, rjson
 License: MIT
 
+Tested on:
+* Twitter
+* Assistly
+
 
 <h2>Usage:</h2>
 1) Create a list with the parameters for your application, structured as below:
@@ -56,7 +60,7 @@ MakeRequest(params, "http://api.twitter.com/1/statuses/update.json", "POST", req
 
 
 <h2>Acknowledgements / license</h2>
-Github user twittoru provided the inspiration for the included HMAC-SHA1 implementation, found at: https://gist.github.com/586468
+Github user twittoru provided the included HMAC-SHA1 implementation, found at: https://gist.github.com/586468
 
 This package is made available under the MIT license:
 
