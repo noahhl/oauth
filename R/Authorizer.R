@@ -23,7 +23,8 @@ GetRequestToken <- function(params, noisy=FALSE) {
 
 GetAuthorization <- function(params) {
   url <- paste(params$server$auth, "?oauth_token=", params$oauth_token, sep="")
-  cat("Go to: ", url)
+  cat("Go to: ", url, "(going to try to take you there now)")
+  browseURL(url)
   cat("\n\nEnter the oauth_verifier received there:")
   oauth_verifier <- readline()
 }
