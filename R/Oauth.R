@@ -4,7 +4,7 @@ library(digest)
 #source("Authorizer.R")
 
 
-Authorize <- function(params, noisy=F, save=T) {
+Authorize <- function(params, noisy=F, save=T, file=NULL) {
   params$oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse="")
   params$oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))
 
@@ -21,13 +21,19 @@ Authorize <- function(params, noisy=F, save=T) {
 
   if(save) {
     site <- sub("https://|http://", "", strsplit(params$server$auth, ".com")[[1]][1])
-    save(params, file=paste("~/.oauthparams_", site, ".Rdata", sep=""))
+    if(is.null(file)) {
+      file=paste("~/.oauthparams_", site, ".Rdata", sep="")
+    }
+    save(params, file)
   }
   return(params)
 }  
 
-LoadCredentials <- function(site) {
-  load(file=paste("~/.oauthparams_", site, ".Rdata", sep=""), envir = .GlobalEnv)
+LoadCredentials <- function(site, file=NULL) {
+  if(is.null(file)) {
+    file = file=paste("~/.oauthparams_", site, ".Rdata", sep="")
+  }
+  load(file, envir = .GlobalEnv)
 }
 
 MakeRequest <- function(params, resource, method, request=NULL, noisy=FALSE) {

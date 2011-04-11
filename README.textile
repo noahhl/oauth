@@ -1,20 +1,8 @@
 <h1>oauth: a simple oauth 1.0 client for R</h1>
 
-This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. Focus has been made on limiting external dependencies to RCurl and digest, and on providing a simple syntax. 
+This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. External dependencies are limited to RCurl and digest. Syntax is (largely) simple.
 
-This package is unreleased/alpha. Use at your own risk.
-
-Package: oauth
-Title: OAuth client for R
-Version: 0.1
-Depends: RCurl, digest
-Suggests: XML, rjson
-License: MIT
-
-Tested on:
-* Twitter
-* Assistly
-
+This package is essentially unreleased/pre-pre-pre-alpha. Use at your own risk. <b>Please</b> report errors, etc.
 
 <h2>Usage:</h2>
 1) Create a list with the parameters for your application, structured as below:

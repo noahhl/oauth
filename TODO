@@ -1,5 +1,4 @@
 * Package docs
-* Error checking / rescue
 * Support for RSA-SHA1, other algos
 * Example
 * More tested usages
