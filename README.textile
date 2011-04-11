@@ -5,7 +5,25 @@ This is a simple implementation of an Oauth 1.0 client for the <a href="http://w
 This package is essentially unreleased/pre-pre-pre-alpha. Use at your own risk. <b>Please</b> report errors, etc.
 
 <h2>Installation:</h2>
+Option 1 - install from source (most up to date):
 
+<pre>
+  git clone git@github.com:noahhl/oauth.git
+  R CMD INSTALL oauth
+</pre>
+
+Option 2 - may not be up to date:
+
+<pre>
+  Download https://github.com/noahhl/oauth/raw/master/oauth_0.0.tar.gz
+  R CMD INSTALL oauth_0.0.tar.gz
+</pre>
+
+Option 3 - likely not up to date:
+
+<pre>
+  install.packages("oauth", repos="http://r.datarobots.com", type="source")
+</pre>
 
 <h2>Usage:</h2>
 1) Create a list with the parameters for your application, structured as below:
