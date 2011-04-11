@@ -26,16 +26,23 @@ params <- list(oauth_consumer_key = "B2QJkcSYdARDJ10Gjo2kNw",
 2) Run the <code>Authorize()</code> command, passing it your parameters, optionally with parameters to enable "noisy" output or to specify not to save credentials beyond this session. Recapture the output back into <code>params</code>.
 
 <pre>
-params <- Authorize(params, noisy=F, save=T)
+params <- Authorize(params, noisy=F, save=T, file=NULL)
 </pre> 
 
-3) IF you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(consumer_key)</code> command, passing it the consumer key for the app you're using.
+3) IF you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(site)</code> or <code>LoadCredentials(file)</code> command, passing it either a path to a previously saved credential file, or the name of the service you are trying to auth for (e.g., <code>api.twitter</code>)
 
 <pre>
-  LoadCredentials("B2QJkcSYdARDJ10Gjo2kNw")
+  LoadCredentials("api.twitter")
+  LoadCredentials("~/mytwittercrdentials")
 </pre>
 
-4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below.
+4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below. Briefly:
+<ul>
+  <li><code>params</code> are the resultant params from an <code>Authorize()</code> command, or the <code>params</code> loaded from <code>LoadCredentials</code></li>
+  <li><code>resource</code> is the URL of the resource you are trying to access. If this is a request in which you would pass request parameters (e.g., <code>?search=abcdefg</code>), do not include those parameters in the resource URL.</li>
+  <li><code>method</code> is one of "GET", "POST", "PUT", or "DELETE".</li>
+  <li><code>request</code> are any request parameters provided as a named character vector (e.g., <code>c(search="Test", since="yesterday")</code>)</li>
+</ul>
 
 <pre>
 #Verify credentials
