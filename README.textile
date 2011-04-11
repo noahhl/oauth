@@ -4,6 +4,9 @@ This is a simple implementation of an Oauth 1.0 client for the <a href="http://w
 
 This package is essentially unreleased/pre-pre-pre-alpha. Use at your own risk. <b>Please</b> report errors, etc.
 
+<h2>Installation:</h2>
+
+
 <h2>Usage:</h2>
 1) Create a list with the parameters for your application, structured as below:
 
@@ -53,6 +56,7 @@ MakeRequest(params, "http://api.twitter.com/1/statuses/update.json", "POST", req
 
 </pre>
 
+A demo can be accessed by loading the <code>oauth</code> package and running <code>demo("term-ie_demo")</code>.
 
 <h2>Acknowledgements / license</h2>
 Github user twittoru provided the included HMAC-SHA1 implementation, found at: https://gist.github.com/586468
