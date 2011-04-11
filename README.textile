@@ -29,8 +29,8 @@ Option 3 - likely not up to date:
 1) Create a list with the parameters for your application, structured as below:
 
 <pre>
-params <- list(oauth_consumer_key = "B2QJkcSYdARDJ10Gjo2kNw", 
-            oauth_consumer_secret = "WJPF3SENJdk3ACSDF1OJfVJ5EDI3BkYbEQASDFSFA", 
+params <- list(oauth_consumer_key = "yourconsumerkey", 
+            oauth_consumer_secret = "yourconsumersecret", 
             oauth_callback="http://somedomain.com",
             oauth_signature_method = "HMAC-SHA1",
             oauth_version="1.0", 
@@ -77,7 +77,7 @@ MakeRequest(params, "http://api.twitter.com/1/statuses/update.json", "POST", req
 A demo can be accessed by loading the <code>oauth</code> package and running <code>demo("term-ie_demo")</code>.
 
 <h2>Acknowledgements / license</h2>
-Github user twittoru provided the included HMAC-SHA1 implementation, found at: https://gist.github.com/586468
+Github user twittoru provided the included HMAC-SHA1 implementation, found at: <a href="https://gist.github.com/586468">https://gist.github.com/586468</a>
 
 This package is made available under the MIT license:
 
