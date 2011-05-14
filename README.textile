@@ -1,6 +1,6 @@
-<h1>oauth: a simple oauth 1.0 client for R</h1>
+<h1>oauth: a simple oauth client for R</h1>
 
-This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. External dependencies are limited to RCurl and digest. Syntax is intended to be straightforward. 
+This is a simple implementation of an Oauth 1.0 and Oauth 2.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. External dependencies are limited to RCurl and digest. Syntax is intended to be straightforward. 
 
 Use at your own risk. <b>Please</b> report errors, feature requests, etc. using Github issues.
 
