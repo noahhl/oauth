@@ -1,1 +1,1 @@
-export(Authorize, LoadCredentials, MakeRequest)
+export(Authorize, LoadCredentials, MakeRequest, Oauth2Authorize, Oauth2MakeRequest)
