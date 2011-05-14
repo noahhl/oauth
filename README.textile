@@ -14,6 +14,7 @@ Use at your own risk. <b>Please</b> report errors, feature requests, etc. using 
 <h2>Usage:</h2>
 1) Create a list with the parameters for your application, structured as below:
 
+For Oauth 1.0:
 <pre>
 params <- list(oauth_consumer_key = "yourconsumerkey", 
             oauth_consumer_secret = "yourconsumersecret", 
@@ -30,20 +31,47 @@ params <- list(oauth_consumer_key = "yourconsumerkey",
 )
 </pre>
 
+
+For Oauth 2.0:
+<pre>
+  params <- list(
+    client_id = "6b46fbe891254613e95basdfsadfasdc220e68",
+    client_secret = "c28da69a504eeeaasdfsafdas48fc605b3cac5",
+    type = "web_server",
+    redirect_uri = "http://37signals.com/",
+    #For user to authorize app
+    request_uri = "https://launchpad.37signals.com/authorization/new",
+    #To get token
+    token_uri = "https://launchpad.37signals.com/authorization/token"
+    )
+</pre>
+
+
 2) Run the <code>Authorize()</code> command, passing it your parameters, optionally with parameters to enable "noisy" output or to specify not to save credentials beyond this session. Recapture the output back into <code>params</code>. If <code>save=T</code> and <code>file=NULL</code>, the credentials will be saved in the local directory in a file name like <code>.oauthparams_api.twitter.Rdata</code>.
 
+For Oauth 2 implementations, prepend <code>Authorize</code> with <code>Oauth2</code>. You can use the refresh token by adding the "refresh=F" option.
+
+Oauth 1:
 <pre>
 params <- Authorize(params, noisy=F, save=T, file=NULL)
 </pre> 
 
-3) If you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(site)</code> or <code>LoadCredentials(file)</code> command, passing it either a path to a previously saved credential file, or the name of the service you are trying to auth for (e.g., <code>api.twitter</code>)
+Oauth 2:
+<pre>
+params <- Oauth2Authorize(params, noisy=F, save=T, file=NULL, refresh=FALSE)
+</pre> 
+
+
+3) If you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(site)</code> or <code>LoadCredentials(file)</code> command, passing it either a path to a previously saved credential file, or the name of the service you are trying to auth for (e.g., <code>api.twitter</code>).
 
 <pre>
   LoadCredentials(site="api.twitter")
   LoadCredentials(file="~/mytwittercredentials")
 </pre>
 
-4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below. Briefly:
+4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. For Oauth 2 implementations, prepend <code>MakeRequest</code> with <code>Oauth2</code> (e.g., <code>Oauth2MakeRequest</code>); parameters are the same for Oauth1 and Oauth2.
+
+Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below. Briefly:
 <ul>
   <li><code>params</code> are the resultant params from an <code>Authorize()</code> command, or the <code>params</code> loaded from <code>LoadCredentials</code></li>
   <li><code>resource</code> is the URL of the resource you are trying to access. If this is a request in which you would pass request parameters (e.g., <code>?search=abcdefg</code>), do not include those parameters in the resource URL.</li>
