@@ -1,28 +1,14 @@
 <h1>oauth: a simple oauth 1.0 client for R</h1>
 
-This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. External dependencies are limited to RCurl and digest. Syntax is (largely) simple.
+This is a simple implementation of an Oauth 1.0 client for the <a href="http://www.r-project.org">R</a> statistical programming language. External dependencies are limited to RCurl and digest. Syntax is intended to be straightforward. 
 
-This package is essentially unreleased/pre-pre-pre-alpha. Use at your own risk. <b>Please</b> report errors, etc.
+Use at your own risk. <b>Please</b> report errors, feature requests, etc. using Github issues.
 
 <h2>Installation:</h2>
-Option 1 - install from source (most up to date):
 
 <pre>
   git clone git@github.com:noahhl/oauth.git
   R CMD INSTALL oauth
-</pre>
-
-Option 2 - may not be up to date:
-
-<pre>
-  Download https://github.com/noahhl/oauth/raw/master/oauth_0.0.tar.gz
-  R CMD INSTALL oauth_0.0.tar.gz
-</pre>
-
-Option 3 - likely not up to date:
-
-<pre>
-  install.packages("oauth", repos="http://r.datarobots.com", type="source")
 </pre>
 
 <h2>Usage:</h2>
@@ -44,17 +30,17 @@ params <- list(oauth_consumer_key = "yourconsumerkey",
 )
 </pre>
 
-2) Run the <code>Authorize()</code> command, passing it your parameters, optionally with parameters to enable "noisy" output or to specify not to save credentials beyond this session. Recapture the output back into <code>params</code>.
+2) Run the <code>Authorize()</code> command, passing it your parameters, optionally with parameters to enable "noisy" output or to specify not to save credentials beyond this session. Recapture the output back into <code>params</code>. If <code>save=T</code> and <code>file=NULL</code>, the credentials will be saved in the local directory in a file name like <code>.oauthparams_api.twitter.Rdata</code>.
 
 <pre>
 params <- Authorize(params, noisy=F, save=T, file=NULL)
 </pre> 
 
-3) IF you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(site)</code> or <code>LoadCredentials(file)</code> command, passing it either a path to a previously saved credential file, or the name of the service you are trying to auth for (e.g., <code>api.twitter</code>)
+3) If you've previously auth'd, you can reload the credentials using the <code>LoadCredentials(site)</code> or <code>LoadCredentials(file)</code> command, passing it either a path to a previously saved credential file, or the name of the service you are trying to auth for (e.g., <code>api.twitter</code>)
 
 <pre>
-  LoadCredentials("api.twitter")
-  LoadCredentials("~/mytwittercrdentials")
+  LoadCredentials(site="api.twitter")
+  LoadCredentials(file="~/mytwittercredentials")
 </pre>
 
 4) Make a request, using the <code>MakeRequest(params, resource, method, request=NULL, noisy=F)</code> command. Some examples for <a href = "http://developer.twitter.com/doc/">Twitter</a> are provided below. Briefly:
