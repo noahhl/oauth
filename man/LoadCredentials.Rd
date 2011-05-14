@@ -9,7 +9,7 @@
 }
 \seealso{Authorize}
 \examples{
-  LoadCredentials(site="api.twitter")
-  LoadCredentials(file="~/mycredentials")
+  \dontrun{LoadCredentials(site="api.twitter")}
+  \dontrun{LoadCredentials(file="~/mycredentials")}
 }
 

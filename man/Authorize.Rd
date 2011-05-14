@@ -34,5 +34,5 @@
 }
 \seealso{MakeRequest}
 \examples{
-  params <- Authorize(params)
+  \dontrun{params <- Authorize(params)}
 }
