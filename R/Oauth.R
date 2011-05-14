@@ -1,9 +1,3 @@
-library(RCurl)
-library(digest)
-#source("Signature.R")
-#source("Authorizer.R")
-
-
 Authorize <- function(params, noisy=F, save=T, file=NULL) {
   params$oauth_nonce = paste(letters[runif(20, 1, 27)], sep="", collapse="")
   params$oauth_timestamp = as.character(round(as.numeric(as.POSIXlt(Sys.time(), tz="UTC")),0))
@@ -22,7 +16,7 @@ Authorize <- function(params, noisy=F, save=T, file=NULL) {
   if(save) {
     site <- sub("https://|http://", "", strsplit(params$server$auth, ".com")[[1]][1])
     if(is.null(file)) {
-      file=paste("~/.oauthparams_", site, ".Rdata", sep="")
+      file=paste(".oauthparams_", site, ".Rdata", sep="")
     }
     save(params, file)
   }
@@ -34,7 +28,7 @@ LoadCredentials <- function(site=NULL, file=NULL) {
     stop("You need to provide some information to identify the credentials you'd like to load.")
 
   if(is.null(file)) {
-    file = file=paste("~/.oauthparams_", site, ".Rdata", sep="")
+    file = file=paste(".oauthparams_", site, ".Rdata", sep="")
   }
   load(file, envir = .GlobalEnv)
 }
