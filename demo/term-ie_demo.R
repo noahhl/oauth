@@ -21,4 +21,4 @@ cat("Testing that oauth_token was received correctly: ", params$oauth_token == "
 cat("Testing that oauth_token_secret was received correctly: ", params$oauth_token_secret == "accesssecret", "\n")
 
 testRequest <- MakeRequest(params, "http://term.ie/oauth/example/echo_api.php", "GET", c(method="foo", bar="baz"))
-cat("Testing that a a request can be made correctly was received correctly: ", testRequest == "method=foo&bar=baz", "\n")
+cat("Testing that a request can be made correctly was received correctly: ", testRequest == "method=foo&bar=baz", "\n")
