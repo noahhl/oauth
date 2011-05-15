@@ -18,7 +18,7 @@ Authorize <- function(params, noisy=F, save=T, file=NULL) {
     if(is.null(file)) {
       file=paste(".oauthparams_", site, ".Rdata", sep="")
     }
-    save(params, file)
+    save(params, file=file)
   }
   return(params)
 }  
