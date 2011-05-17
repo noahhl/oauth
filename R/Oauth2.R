@@ -13,7 +13,8 @@ Oauth2Authorize <- function(params, noisy=F, save=T, file=NULL, refresh=F) {
     params <- c(params, fromJSON(rawToChar(postForm(params$token_uri, .params=list(client_id = params$client_id, client_secret = params$client_secret, code=params$response_code, type=params$type, redirect_uri=params$redirect_uri)))))    
   }
   if(save) {
-    site <- sub("https://|http://", "", strsplit(params$request_uri, ".com")[[1]][1])
+    site <- paste(sub("https://|http://", "", strsplit(params$request_uri, "\\.")[[1]])[1:(grep("/", sub("https://|http://", "", strsplit(params$request_uri, "\\.")[[1]]))[1]-1)], collapse=".")
+    
     if(is.null(file)) {
       file=paste(".oauthparams_", site, ".Rdata", sep="")
     }

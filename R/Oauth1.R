@@ -14,7 +14,7 @@ Authorize <- function(params, noisy=F, save=T, file=NULL) {
   }
 
   if(save) {
-    site <- sub("https://|http://", "", strsplit(params$server$auth, ".com")[[1]][1])
+    site <- paste(sub("https://|http://", "", strsplit(params$server$auth, "\\.")[[1]])[1:(grep("/", sub("https://|http://", "", strsplit(params$server$auth, "\\.")[[1]]))[1]-1)], collapse=".")
     if(is.null(file)) {
       file=paste(".oauthparams_", site, ".Rdata", sep="")
     }
